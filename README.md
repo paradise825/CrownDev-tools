@@ -1,9 +1,9 @@
-# CrownDev-tools
+
 # Crown Dev
 
 Welcome to Crown Dev. We build simple digital tools that help people get everyday tasks done quickly, without sign-ups, without ads in the way, and without handing over their files.
 
-**Live site:** https://CrownDev.github.io/crowndev/
+**Live site:** https://CrownDev-tools.github.io/crowndev/
 
 ## What we offer
 
