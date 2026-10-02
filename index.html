@@ -24,8 +24,9 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--sun);outline-offset:2px}
 .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
 header{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
-.logo{font:800 22px "Bricolage Grotesque",sans-serif;text-decoration:none}
-.logo span{background:var(--sun);color:var(--on-sun);padding:0 6px;border-radius:6px;margin-right:2px}
+.logo{font:800 22px "Bricolage Grotesque",sans-serif;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo-icon{width:40px;height:40px;border-radius:8px;background:var(--sun);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--on-sun);font-size:20px;flex-shrink:0}
+.logo span{background:var(--sun);color:var(--on-sun);padding:0 6px;border-radius:6px}
 nav a{margin-left:18px;text-decoration:none;color:var(--mute);font-weight:600}
 nav a:hover{color:var(--ink)}
 .hero{padding:36px 0 28px;max-width:640px}
@@ -63,7 +64,10 @@ footer{border-top:1px solid var(--line);padding:22px 0 30px;color:var(--mute);fo
 <body>
 <div class="wrap">
 <header>
-  <a class="logo" href="#top"><span>Crown</span>Dev</a>
+  <a class="logo" href="#top">
+    <div class="logo-icon">👑</div>
+    <span>Crown</span>Dev
+  </a>
   <nav aria-label="Main"><a href="#tools">Tools</a><a href="about.html">About</a><a href="#contact">Contact</a></nav>
 </header>
 
@@ -143,13 +147,11 @@ Built landing pages and small web tools for local clients.</textarea>
 const $=id=>document.getElementById(id);
 $('yr').textContent=new Date().getFullYear();
 
-/* Tabs */
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
   document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id===b.getAttribute('aria-controls')));
 });
 
-/* Image resizer */
 let img=null,ratio=1,url='';
 $('file').onchange=e=>{
   const f=e.target.files[0]; if(!f)return;
@@ -180,8 +182,7 @@ $('go').onclick=()=>{
   },$('fmt').value,+$('q').value);
 };
 
-/* CV builder */
-const esc=s=>s.replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const esc=s=>s.replace(/[&<>\"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 function cv(){
   const v=id=>esc($(id).value.trim());
   const sk=v('cSkills').split(',').map(s=>s.trim()).filter(Boolean).join(' &bull; ');
