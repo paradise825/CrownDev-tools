@@ -181,7 +181,7 @@ $('go').onclick=()=>{
 };
 
 /* CV builder */
-const esc=s=>s.replace(/[&<>\"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const esc=s=>s.replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 function cv(){
   const v=id=>esc($(id).value.trim());
   const sk=v('cSkills').split(',').map(s=>s.trim()).filter(Boolean).join(' &bull; ');
